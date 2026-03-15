@@ -86,9 +86,9 @@ form.addEventListener('submit',async function (e) {
         console.log('userId:', data.id)
 
         if (data.role === 'admin') {
-            window.location.href = '/InfoMa2/adminPage/adminp.html';
+            window.location.href = '/adminPage/adminp.html';
         } else {
-            window.location.href = '/InfoMa2/WelcomPage/welcome.html';
+            window.location.href = '/WelcomPage/welcome.html';
         }       
 
 });

@@ -31,7 +31,7 @@ setInterval(updateDateTime, 1000)
 
 document.getElementById('logoutBtn').addEventListener('click', function() {
     localStorage.clear()
-    window.location.href = '/InfoMa2/Login/login.html'
+    window.location.href = '/Login/login.html'
 })
 
 document.getElementById('submitReason').addEventListener('click', async function() {
@@ -54,5 +54,5 @@ document.getElementById('submitReason').addEventListener('click', async function
     }
 
     localStorage.setItem('visitId', data[0].id)
-    window.location.href = '/InfoMa2/dboard/dboard.html'
+    window.location.href = '/dboard/dboard.html'
 })

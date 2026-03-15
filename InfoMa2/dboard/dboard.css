@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("/InfoMa2/WelcomPage/photos/backg.JPG");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("/WelcomPage/photos/backg.JPG");
     background-size: cover;
     background-position: center;
     height: 100vh;

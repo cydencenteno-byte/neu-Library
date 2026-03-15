@@ -129,7 +129,7 @@ roleSelect.addEventListener('change', function() {
         
     }
         alert('Registration successful!')
-        window.location.href = '/InfoMa2/Login/login.html'
+        window.location.href = '/Login/login.html'
         
 
     })

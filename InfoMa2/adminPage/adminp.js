@@ -3,13 +3,13 @@ import { supabase } from '/InfoMa2/supabase.js'
 // ── PROTECTION ──
 const userRole = localStorage.getItem('userRole')
 if (!userRole || userRole !== 'admin') {
-    window.location.href = '/InfoMa2/Login/login.html'
+    window.location.href = '/Login/login.html'
 }
 
 // ── LOGOUT ──
 document.getElementById('logoutBtn').addEventListener('click', function() {
     localStorage.clear()
-    window.location.href = '/InfoMa2/Login/login.html'
+    window.location.href = '/Login/login.html'
 })
 
 // ── LOAD STATS ──

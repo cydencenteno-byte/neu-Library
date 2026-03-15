@@ -3,7 +3,7 @@ import { supabase } from '/InfoMa2/supabase.js'
 // ── PROTECTION ──
 const userId = localStorage.getItem('userId')
 if (!userId) {
-    window.location.href = '/InfoMa2/Login/login.html'
+    window.location.href = '/Login/login.html'
 }
 
 // ── USER INFO ──
@@ -86,11 +86,11 @@ document.getElementById('exitBtn').addEventListener('click', async function() {
 
     localStorage.removeItem('visitId')
     alert('Goodbye! See you next time!')
-    window.location.href = '/InfoMa2/Login/login.html'
+    window.location.href = '/Login/login.html'
 })
 
 // ── LOGOUT ──
 document.getElementById('logoutBtn').addEventListener('click', function() {
     localStorage.clear()
-    window.location.href = '/InfoMa2/Login/login.html'
+    window.location.href = '/Login/login.html'
 })
