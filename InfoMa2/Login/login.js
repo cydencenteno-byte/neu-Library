@@ -1,12 +1,12 @@
-import { supabase } from "/InfoMa2/supabase.js";
+import { supabase } from "/supabase.js";
 
 const existingUser = localStorage.getItem('userId')
 const existingRole = localStorage.getItem('userRole')
 
 if (existingUser && existingRole === 'admin') {
-    window.location.href = '/InfoMa2/adminPage/adminp.html'
+    window.location.href = '/adminPage/adminp.html'
 } else if (existingUser) {
-    window.location.href = '/InfoMa2/WelcomPage/welcome.html'
+    window.location.href = '/WelcomPage/welcome.html'
 }
 
 const form = document.querySelector('form');

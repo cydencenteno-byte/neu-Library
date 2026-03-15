@@ -1,4 +1,4 @@
-import { supabase } from '/InfoMa2/supabase.js'
+import { supabase } from '/supabase.js'
 
 // ── PROTECTION ──
 const userId = localStorage.getItem('userId')
