@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("/InfoMa2/WelcomPage/photos/backg.JPG");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav{
+ background-color: rgb(2, 13, 46);
+ width: 100%;
+ height: 45px;
+ box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+ align-items: flex-start;
+ display: flex;
+ z-index: 10;
+ position: relative;
+ margin: 0;
+ box-sizing: border-box;
+ padding: 0 20px;
+}
+
+.logotop{
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-position: center;
+    margin-left: 50px;
+}
+
+nav h3{
+    color: rgb(197, 191, 101);
+    margin-left: 20px;
+    font-size: 20px;
+    align-self: center;
+}
+
+.welcomecard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(133, 123, 223, 0.13);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    z-index: 2;
+    width: 500px;
+    max-width: 90%;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+}
+.logo img{
+    width: 100px;
+    height: auto;
+    margin-bottom: 30px;
+    align-self: center;
+
+}
+
+.welcomecard button {
+    width: 100%;
+    padding: 12px;
+    background-color: #230B8B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    box-sizing: border-box;
+}
+
+.welcomecard button:hover {
+    background-color: #c5b201;
+    color: black;
+}
+
+.welcomecard select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 15px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.welcomecard h1 {
+    font-size: 28px;
+     margin-bottom: 15px;
+    word-wrap: break-word;
+}
+
+.welcomecard h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.welcomecard p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.welcomecard hr {
+    margin: 15px 0;
+    opacity: 0.3;
+}
+
+.logoutbtn {
+    
+    margin-left: auto;     
+    margin-right: 20px;
+    padding: 5px 15px;
+    background: solid;
+    background-color: #f7f7f7a4;
+    border: 2px solid;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    align-self: center;
+}
+
+.logoutbtn:hover {
+    background-color: white;
+    color: rgb(2, 13, 46);
+}

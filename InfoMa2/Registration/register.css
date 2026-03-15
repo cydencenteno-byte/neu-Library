@@ -1,0 +1,166 @@
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("/InfoMa2/Registration/photos/bglib.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    overflow-y: auto;
+    
+}
+
+.logotop{
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-position: center;
+    margin-left: 50px;
+}
+
+nav{
+ background-color: rgb(2, 13, 46);
+ width: 100%;
+ height: 45px;
+ box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+ align-items: center;
+ display: flex;
+ z-index: 10;
+ position: relative;
+}
+nav h3{
+    color: rgb(197, 191, 101);
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+header{
+    text-align: center;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    flex: 1;
+}
+
+header h1, header h3{
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+header h1{
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+header h3{
+    font-size: 25px;
+    margin-top: 0;
+}
+
+.card{
+    background-color: white;
+    width: 70%;
+    height: 50vh;
+    max-height: 80vh;
+    border-radius: 10px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    scrollbar-width: thin;
+    align-items: stretch;
+}
+
+.studentRole,
+.facultyRole,
+.staffRole {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+
+.defaultform {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+    align-items: stretch;
+}
+
+.namegrid , .passwordgrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.rolegrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: start;
+    width: 100%;
+}
+
+
+.fieldform{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+select{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="text"], input[type="email"], input[type="password"]{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+button{
+    width: 100%;
+    padding: 10px;
+    background-color: #230B8B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+    align-self: center
+}
+
+button:hover{
+    background-color: #a39512;
+}
+
+label{
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+

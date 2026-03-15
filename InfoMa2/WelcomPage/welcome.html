@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Era University Library</title>
+    <link rel="stylesheet" href="welcome.css">
+</head>
+<body>
+    <nav>
+       <a href="/InfoMa2/Login/login.html"> <img src="/InfoMa2/WelcomPage/photos/neulogo.png" alt="New Era University Logo" class="logotop"></a>
+        <h3>NEU LIBRARY</h3>
+        <button id="logoutBtn" class="logoutbtn">Logout</button>
+    </nav>
+    <div class="wlecomecardcontainer">
+    <div class="welcomecard">
+    <div class="logo"> <img src="/InfoMa2/WelcomPage/photos/neulogo.png" alt="New Era University Logo"></div>
+    <h1>Welcome to New Era University Library</h1>
+    <h1 id="firstName"></h1>
+    <p id="dateTime"></p>
+    <hr>
+    <h2>Why Are You Visiting For Today?</h2>
+    <select id="visitReason">
+        <option value="borrow">Borrow Books</option>
+        <option value="return">Return Books</option>
+        <option value="study">Study</option>
+        <option value="research">Research</option>
+        <option value="meeting">Meeting</option>
+        <option value="other">Other</option>
+        </select>  
+        <button id="submitReason">ENTER LIBRARY</button>
+    </div>
+    </div>
+    <script type="module" src="/InfoMa2/supabase.js"></script>
+    <script type="module" src="welcome.js"></script>
+</body>
+</html>

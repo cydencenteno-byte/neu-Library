@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Era University Library</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <nav>
+        <img src="/InfoMa2/Login/photos/neulogo.png" alt="New Era University Logo" class="logotop">
+        <h3>NEU LIBRARY</h3>
+    </nav>
+    <header>
+        <h1>NEU LIBRARY</h1>
+        <h3>REGISTRATION</h3>
+    </header>
+    <main>
+        <div class="card">
+            <form>
+                
+                <div class="fieldform">
+                <label> Select Role:</label>
+                <select id="role">
+                    <option value="">--Select Role--</option>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                    <option value="staff">Staff</option>
+                </select>
+                </div>
+                
+                <!----->
+        
+                <div class="studentRole" style="display: none;">
+                    <div class="fieldform">
+                    <label>College:</label>
+                    <select id="college">
+                        <option value="">-- Select College --</option>
+                        <option value="cas">College of Arts and Sciences</option>
+                        <option value="cba">College of Business Administration</option>
+                        <option value="ced">College of Education</option>
+                        <option value="cet">College of Engineering and Technology</option>
+                        <option value="con">College of Nursing</option>
+                        <option value="ccs">College of Computer Studies</option>
+                        <option value="coa">College of Accountancy</option>
+                        <option value="com">College of Music</option>
+                        <option value="col">College of Law</option>
+                        <option value="ccom">College of Communication</option>
+                        <option value="cmed">College of Medicine</option>
+                        <option value="carch">College of Architecture</option>
+                        <option value="crim">College of Criminology</option>
+                        <option value="sgs">School of Graduate Studies</option>
+                    </select>
+                    </div>
+                </div>
+                <!----->
+
+                <!----->
+                <div class="facultyRole" style="display: none;">    
+                    <div class="fieldform">
+                    <label>Department:</label>  
+                    <select id="department">
+
+                        <option value="psychology">Department of Psychology</option>
+                        <option value="biology">Department of Biology</option>
+                        <option value="mathematics">Department of Mathematics</option>
+                        <option value="english">Department of English</option>
+                        <option value="philosophy">Department of Philosophy</option>
+
+                        <option value="civil">Department of Civil Engineering</option>
+                        <option value="electrical">Department of Electrical Engineering</option>
+                        <option value="mechanical">Department of Mechanical Engineering</option>
+                        <option value="electronics">Department of Electronics Engineering</option>
+                        
+                        <option value="cs">Department of Computer Science</option>
+                        <option value="it">Department of Information Technology</option>
+                        <option value="is">Department of Information Systems</option>
+
+
+                        <option value="management">Department of Management</option>
+                        <option value="marketing">Department of Marketing</option>
+                        <option value="finance">Department of Finance</option>
+                        <option value="hrm">Department of Human Resource Management</option>
+
+                        <option value="elementary">Department of Elementary Education</option>
+                        <option value="secondary">Department of Secondary Education</option>
+
+                        <option value="nursing">Department of Nursing</option>
+
+                        <option value="accounting">Department of Accountancy</option>
+
+                        <option value="journalism">Department of Journalism</option>
+                        <option value="broadcasting">Department of Broadcasting</option>
+
+                        <option value="music">Department of Music</option>
+
+                        <option value="law">Department of Law</option>
+
+                        <option value="medicine">Department of Medicine</option>
+                        <option value="medtech">Department of Medical Technology</option>
+                        <option value="pharmacy">Department of Pharmacy</option>
+
+                        <option value="criminology">Department of Criminology</option>
+
+                        <option value="graduate">School of Graduate Studies</option>
+
+                    </select>
+                    </div>
+                </div>
+                
+                <!----->
+                <div class="staffRole" style="display: none;">
+                    <div class="fieldform">
+                    <label>Position:</label>
+                    <select id="position">
+                        <option value="">-- Select Position --</option>
+                        <option value="librarian">Librarian</option>
+                        <option value="assistant">Library Assistant</option>
+                        <option value="faculty">Faculty Member</option>
+                        <option value="admin_staff">Administrative Staff</option>
+                        <option value="registrar">Registrar Staff</option>
+                        <option value="it_staff">IT Staff</option>
+                        <option value="security">Security Personnel</option>
+                        <option value="maintenance">Maintenance Staff</option>
+                        <option value="cashier">Cashier</option>
+                        <option value="guidance">Guidance Counselor</option>
+                    </select>
+                </div>
+                </div>
+                    <!----->
+
+            <div class="defaultform" style="display: none;">
+
+                <div class="namegrid">
+                <div class="fieldform">
+                <label>First Name:</label>
+                <input type="text" id="firstName" placeholder="Enter your first name">
+                </div>
+
+                <div class="fieldform">
+                <label>Last Name:</label>
+                <input type="text" id="lastName" placeholder="Enter your last name">
+                </div>
+                <p id="nameError" class="error-message"></p>
+                </div>
+
+                <div class="fieldform">
+                 <label>Email:</label>
+                <input type="email" id="email" placeholder="Enter your email">
+                <p id="emailError" class="error-message"></p>
+                </div>
+                
+                <div class="passwordgrid">
+                <div class="fieldform">
+                <label>Create a Password:</label>
+                <input type="password" id="password" placeholder="Create a password">
+                <p id="passwordError" class="error-message"></p>
+                </div>
+
+                <div class="fieldform">
+                <label>Confirm Password:</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm your password">
+                </div>
+                </div>
+                <p id="generalError" class="error-message"></p>
+
+                 
+                <button type="submit" class="btn">REGISTER</button>
+                <p>Already have an account? <a href="/InfoMa2/Login/login.html">Log in here</a></p>
+                </div> 
+            </form>
+        </div>
+    </main>
+    <script type="module" src="/InfoMa2/supabase.js"></script>
+    <script type="module" src="register.js"></script>
+</body>
+</html>

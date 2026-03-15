@@ -1,0 +1,154 @@
+body{
+    background-color: #e3e1f1;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    
+}
+nav{
+ background-color: rgb(2, 13, 46);
+ width: 100%;
+ height: 45px;
+ box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+ align-items: center;
+ display: flex;
+ z-index: 10;
+ position: relative;
+}   
+.logotop{
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-position: center;
+    margin-left: 50px;
+}
+nav h3{
+    color: rgb(197, 191, 101);
+    margin-left: 20px;
+    font-size: 20px;
+}
+.maincontent{
+    display: flex;
+    height: 100vh;;
+}
+.left-side{
+    background-image: linear-gradient(to top, rgba(0,0,0,1), transparent), url("/InfoMa2/Login/photos/NEULIBRARY.png");
+    display: flex;
+    flex-direction: column;
+    background-position: center;
+    height: 100vh;
+    width: 65vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex: 2;
+}
+.texts{
+    color: white;
+    width: 500px;
+    position: absolute;
+    bottom: 100px;
+    left: 80px;
+}
+.right-side{
+    width: 550px;
+    height: 100vh;
+    border-left: 1px solid #c9c3c3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: -5px 0px 10px rgba(0,0,0,0.5);;
+    z-index: 1;
+    
+}
+.bgimg{
+    background-image: url("/InfoMa2/Login/photos/clouds.jpg");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    z-index: 0;
+}
+.header-container {
+    position: relative;
+    z-index: 2;
+}
+main{
+    position: relative;
+    z-index: 2;
+}
+.header-container h1{
+    text-align: center;
+    margin-top: -20px;
+    font-size: 30px;
+}
+.header-container h2{
+    text-align: center;
+    position: relative;
+    font-size: 40px;
+}
+input[type="text"]{
+    width: 250px;
+    height: 12px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.5);;
+}
+input[type="password"]{
+    width: 250px;
+    height: 12px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.5);;
+}
+.Login{
+    width: 253px;
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+    
+}
+.Login h3{
+    margin: 0;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-size: 20px;
+}
+button{
+    width: 272px;
+    height: 30px;
+    background-color: #230B8B;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+button:hover{
+    background-color: #c5b201;
+    color: black;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    margin-top: 80px;
+}
+.logo img{
+    width: 100px;
+    height: auto;
+    align-self: center;
+
+}

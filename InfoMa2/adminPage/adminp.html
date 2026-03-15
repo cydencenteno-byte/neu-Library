@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - NEU Library</title>
+    <link rel="stylesheet" href="adminp.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <nav>
+        <img src="/InfoMa2/adminPage/photos/neulogo.png" class="logotop">
+        <h3>NEU LIBRARY | ADMIN</h3>
+        <button id="logoutBtn" class="logoutbtn">Logout</button>
+    </nav>
+
+    <div class="dashboard">
+
+        
+        <div class="stats-container">
+            <div class="stat-card" id="cardToday">
+                <h3>Today</h3>
+                <h1 id="todayCount">0</h1>
+                <p>Visitors</p>
+            </div>
+            <div class="stat-card" id="cardWeek">
+                <h3>This Week</h3>
+                <h1 id="weekCount">0</h1>
+                <p>Visitors</p>
+            </div>
+            <div class="stat-card" id="cardMonth">
+                <h3>This Month</h3>
+                <h1 id="monthCount">0</h1>
+                <p>Visitors</p>
+            </div>
+            <div class="stat-card" id="cardTotal">
+                <h3>Total</h3>
+                <h1 id="totalCount">0</h1>
+                <p>Visitors</p>
+            </div>
+            <div class="stat-card" id="cardInside">
+                <h3>Currently Inside</h3>
+                <h1 id="insideCount">0</h1>
+                <p>Visitors</p>
+            </div>
+        </div>
+
+        
+        <div class="controls-container">
+            <div class="filter-group">
+                <select id="dateFilter">
+                    <option value="all">All Time</option>
+                    <option value="today">Today</option>
+                    <option value="week">This Week</option>
+                    <option value="month">This Month</option>
+                    <option value="custom">Custom Range</option>
+                </select>
+                <div id="customRange" style="display:none">
+                    <input type="date" id="startDate">
+                    <span>to</span>
+                    <input type="date" id="endDate">
+                </div>
+            </div>
+            <div class="search-group">
+                <input type="text" id="searchInput" 
+                    placeholder="Search by name, role, reason...">
+                <button id="searchBtn">Search</button>
+            </div>
+            <button id="pdfBtn" class="pdf-btn">Export PDF</button>
+        </div>
+
+       
+        <div class="tabs-container">
+            <button class="tab-btn active" id="tabVisits">Visits</button>
+            <button class="tab-btn" id="tabUsers">All Users</button>
+            <button class="tab-btn" id="tabBlocked">Blocked Users</button>
+            <button class="tab-btn" id="tabInside">Currently Inside</button>
+        </div>
+
+        
+        <div class="table-container" id="visitsTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Reason</th>
+                        <th>Time In</th>
+                        <th>Time Out</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="visitorTable"></tbody>
+            </table>
+        </div>
+
+        
+        <div class="table-container" id="usersTable" style="display:none">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>College/Dept</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableBody"></tbody>
+            </table>
+        </div>
+
+    
+        <div class="table-container" id="blockedTable" style="display:none">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="blockedTableBody"></tbody>
+            </table>
+        </div>
+
+  
+        <div class="table-container" id="insideTable" style="display:none">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Reason</th>
+                        <th>Time In</th>
+                    </tr>
+                </thead>
+                <tbody id="insideTableBody"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script type="module" src="/InfoMa2/supabase.js"></script>
+    <script type="module" src="adminp.js"></script>
+</body>
+</html>
