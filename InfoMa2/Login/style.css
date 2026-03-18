@@ -25,6 +25,25 @@ nav{
  z-index: 10;
  position: relative;
 }   
+
+.admin-btn {
+    margin-left: auto;
+    margin-right: 20px;
+    padding: 5px 15px;
+    background: transparent;
+    border: 2px solid rgb(197, 191, 101);
+    color: rgb(197, 191, 101);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.admin-btn:hover {
+    background-color: rgb(197, 191, 101);
+    color: rgb(2, 13, 46);
+}
+
 .logotop{
     width: 40px;
     height: 40px;
