@@ -1,32 +1,44 @@
 import { supabase } from '/supabase.js'
 
-// ── PROTECTION ──
+
 const userRole = localStorage.getItem('userRole')
 if (!userRole || userRole !== 'admin') {
-    window.location.href = '/Login/login.html'
+    window.location.href = '/adminLogin/login.html'
 }
 
-// ── LOGOUT ──
-document.getElementById('logoutBtn').addEventListener('click', function() {
-    localStorage.clear()
-    window.location.href = '/Login/login.html'
+
+document.getElementById('settingsBtn').addEventListener('click', function() {
+    document.getElementById('settingsModal').style.display = 'flex'
 })
 
-// ── LOAD STATS ──
+document.getElementById('closeSettingsBtn').addEventListener('click', function() {
+    document.getElementById('settingsModal').style.display = 'none'
+})
+
+
+document.getElementById('logoutBtn').addEventListener('click', function() {
+    localStorage.clear()
+    window.location.href = '/adminLogin/login.html'
+})
+
+
+document.getElementById('refreshBtn').addEventListener('click', function() {
+    loadStats()
+    loadCurrentTab()
+})
+
+
 async function loadStats() {
     const today = new Date().toLocaleDateString('en-CA')
 
-    // today
     const { data: todayData } = await supabase
         .from('visits').select('*').eq('date', today)
     document.getElementById('todayCount').textContent = todayData?.length || 0
 
-    // total
     const { data: totalData } = await supabase
         .from('visits').select('*')
     document.getElementById('totalCount').textContent = totalData?.length || 0
 
-    // week
     const weekAgo = new Date()
     weekAgo.setDate(weekAgo.getDate() - 7)
     const { data: weekData } = await supabase
@@ -34,7 +46,6 @@ async function loadStats() {
         .gte('time_in', weekAgo.toISOString())
     document.getElementById('weekCount').textContent = weekData?.length || 0
 
-    // month
     const monthAgo = new Date()
     monthAgo.setMonth(monthAgo.getMonth() - 1)
     const { data: monthData } = await supabase
@@ -42,21 +53,19 @@ async function loadStats() {
         .gte('time_in', monthAgo.toISOString())
     document.getElementById('monthCount').textContent = monthData?.length || 0
 
-    // currently inside
     const { data: insideData } = await supabase
         .from('visits').select('*')
         .is('time_out', null)
     document.getElementById('insideCount').textContent = insideData?.length || 0
 }
 
-// ── LOAD VISITS ──
+
 async function loadVisits(search = '', filter = 'all', startDate = '', endDate = '') {
     let query = supabase
         .from('visits')
         .select(`*, users(id, first_name, last_name, role, college, department, position, is_blocked)`)
         .order('time_in', { ascending: false })
 
-    // date filter
     const today = new Date().toLocaleDateString('en-CA')
     if (filter === 'today') {
         query = query.eq('date', today)
@@ -73,20 +82,22 @@ async function loadVisits(search = '', filter = 'all', startDate = '', endDate =
     }
 
     const { data, error } = await query
-
     if (error) { console.log(error); return }
 
     let filtered = data
 
-    // search filter
     if (search) {
         filtered = data.filter(visit => {
             const name = (visit.users?.first_name + ' ' + visit.users?.last_name).toLowerCase()
             const role = visit.users?.role?.toLowerCase() || ''
             const reason = visit.reason?.toLowerCase() || ''
+            const college = visit.users?.college?.toLowerCase() || ''
+            const department = visit.users?.department?.toLowerCase() || ''
             return name.includes(search.toLowerCase()) ||
                    role.includes(search.toLowerCase()) ||
-                   reason.includes(search.toLowerCase())
+                   reason.includes(search.toLowerCase()) ||
+                   college.includes(search.toLowerCase()) ||
+                   department.includes(search.toLowerCase())
         })
     }
 
@@ -101,7 +112,6 @@ async function loadVisits(search = '', filter = 'all', startDate = '', endDate =
     filtered.forEach(visit => {
         const name = (visit.users?.first_name || '') + ' ' + (visit.users?.last_name || '')
         const isBlocked = visit.users?.is_blocked
-        const roleInfo = visit.users?.college || visit.users?.department || visit.users?.position || '-'
         const row = document.createElement('tr')
         row.innerHTML = `
             <td>${name}</td>
@@ -124,11 +134,10 @@ async function loadVisits(search = '', filter = 'all', startDate = '', endDate =
         tbody.appendChild(row)
     })
 
-    // save for PDF
     window.currentData = filtered
 }
 
-// ── LOAD ALL USERS ──
+
 async function loadUsers() {
     const { data, error } = await supabase
         .from('users')
@@ -174,7 +183,7 @@ async function loadUsers() {
     })
 }
 
-// ── LOAD BLOCKED USERS ──
+
 async function loadBlocked() {
     const { data, error } = await supabase
         .from('users')
@@ -208,7 +217,7 @@ async function loadBlocked() {
     })
 }
 
-// ── LOAD CURRENTLY INSIDE ──
+
 async function loadInside() {
     const { data, error } = await supabase
         .from('visits')
@@ -238,7 +247,7 @@ async function loadInside() {
     })
 }
 
-// ── BLOCK/UNBLOCK ──
+
 window.toggleBlock = async function(userId, isBlocked) {
     const confirm = window.confirm(isBlocked ? 'Unblock this user?' : 'Block this user?')
     if (!confirm) return
@@ -255,7 +264,7 @@ window.toggleBlock = async function(userId, isBlocked) {
     loadCurrentTab()
 }
 
-// ── DELETE VISIT ──
+
 window.deleteVisit = async function(visitId) {
     const confirm = window.confirm('Delete this visit record?')
     if (!confirm) return
@@ -272,15 +281,13 @@ window.deleteVisit = async function(visitId) {
     loadStats()
 }
 
-// ── DELETE USER ──
+
 window.deleteUser = async function(userId) {
     const confirm = window.confirm('Delete this user? This cannot be undone!')
     if (!confirm) return
 
-    // delete visits first
     await supabase.from('visits').delete().eq('user_id', userId)
 
-    // then delete user
     const { error } = await supabase
         .from('users').delete().eq('id', userId)
 
@@ -291,7 +298,7 @@ window.deleteUser = async function(userId) {
     loadStats()
 }
 
-// ── TABS ──
+
 let currentTab = 'visits'
 
 function loadCurrentTab() {
@@ -344,10 +351,12 @@ function showTable(id) {
     document.getElementById('usersTable').style.display = 'none'
     document.getElementById('blockedTable').style.display = 'none'
     document.getElementById('insideTable').style.display = 'none'
+    document.getElementById('settingsPanel') && 
+        (document.getElementById('settingsPanel').style.display = 'none')
     document.getElementById(id).style.display = 'block'
 }
 
-// ── SEARCH ──
+
 document.getElementById('searchBtn').addEventListener('click', function() {
     loadVisits(document.getElementById('searchInput').value,
         document.getElementById('dateFilter').value)
@@ -358,7 +367,7 @@ document.getElementById('searchInput').addEventListener('keypress', function(e) 
         document.getElementById('dateFilter').value)
 })
 
-// ── DATE FILTER ──
+
 document.getElementById('dateFilter').addEventListener('change', function() {
     if (this.value === 'custom') {
         document.getElementById('customRange').style.display = 'flex'
@@ -374,7 +383,7 @@ document.getElementById('endDate').addEventListener('change', function() {
         this.value)
 })
 
-// ── PDF EXPORT ──
+
 document.getElementById('pdfBtn').addEventListener('click', function() {
     const { jsPDF } = window.jspdf
     const doc = new jsPDF()
@@ -408,7 +417,7 @@ document.getElementById('pdfBtn').addEventListener('click', function() {
     doc.save('NEU_Library_Visitors.pdf')
 })
 
-// ── STAT CARD FILTERS ──
+
 document.getElementById('cardToday').addEventListener('click', function() {
     document.getElementById('dateFilter').value = 'today'
     loadVisits('', 'today')
@@ -437,6 +446,74 @@ document.getElementById('cardInside').addEventListener('click', function() {
     loadInside()
 })
 
-// ── INIT ──
+
+document.getElementById('saveSettingsBtn').addEventListener('click', async function() {
+    const newEmail = document.getElementById('newEmail').value.trim()
+    const newPassword = document.getElementById('newPassword').value.trim()
+    const confirmPassword = document.getElementById('confirmNewPassword').value.trim()
+    const currentPassword = document.getElementById('currentPassword').value.trim()
+    const settingsError = document.getElementById('settingsError')
+    const settingsSuccess = document.getElementById('settingsSuccess')
+
+    settingsError.textContent = ''
+    settingsSuccess.textContent = ''
+
+    if (!currentPassword) {
+        settingsError.textContent = 'Current password is required!'
+        settingsError.style.display = 'block'
+        return
+    }
+
+    const adminId = localStorage.getItem('userId')
+    const { data, error } = await supabase
+        .from('users')
+        .select('*')
+        .eq('id', adminId)
+        .eq('password', currentPassword)
+        .single()
+
+    if (error || !data) {
+        settingsError.textContent = 'Current password is incorrect!'
+        settingsError.style.display = 'block'
+        return
+    }
+
+    if (newPassword && newPassword !== confirmPassword) {
+        settingsError.textContent = 'New passwords do not match!'
+        settingsError.style.display = 'block'
+        return
+    }
+
+    const updates = {}
+    if (newEmail) updates.email = newEmail
+    if (newPassword) updates.password = newPassword
+
+    if (Object.keys(updates).length === 0) {
+        settingsError.textContent = 'No changes entered!'
+        settingsError.style.display = 'block'
+        return
+    }
+
+    const { error: updateError } = await supabase
+        .from('users')
+        .update(updates)
+        .eq('id', adminId)
+
+    if (updateError) {
+        settingsError.textContent = 'Error saving changes!'
+        settingsError.style.display = 'block'
+        return
+    }
+
+    settingsSuccess.textContent = 'Changes saved! Logging out...'
+    settingsSuccess.style.display = 'block'
+
+    setTimeout(function() {
+        localStorage.clear()
+        window.location.href = '/adminLogin/login.html'
+    }, 2000)
+})
+
+
 loadStats()
 loadVisits()
