@@ -58,6 +58,7 @@ form.addEventListener('submit',async function (e) {
         .select('*')
         .eq('email', email)
         .eq('password', password)
+        .neq('role', 'admin')
         .single()
    
         if(error || !data) {
