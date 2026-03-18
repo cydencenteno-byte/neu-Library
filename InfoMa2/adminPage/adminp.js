@@ -514,6 +514,14 @@ document.getElementById('saveSettingsBtn').addEventListener('click', async funct
     }, 2000)
 })
 
+// test query
+const { data, error } = await supabase
+    .from('visits')
+    .select('*')
+
+console.log('visits data:', data)
+console.log('visits error:', error)
+
 
 loadStats()
 loadVisits()
