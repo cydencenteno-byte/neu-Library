@@ -56,7 +56,7 @@
         <h2>Dashboard</h2>
         <button id="refreshBtn" class="refresh-btn">🔄 Refresh</button>
         </div>
-        
+
         <div class="stats-container">
             <div class="stat-card" id="cardToday">
                 <h3>Today</h3>
@@ -84,6 +84,84 @@
                 <p>Visitors</p>
             </div>
         </div>
+
+        <!-- STATS FILTER -->
+<div class="stats-filter">
+    <h3>Filter Statistics</h3>
+    <div class="filter-row">
+        
+        <div class="filter-item">
+            <label>By Reason:</label>
+            <select id="filterReason">
+                <option value="all">All Reasons</option>
+                <option value="borrow">Borrow Books</option>
+                <option value="return">Return Books</option>
+                <option value="study">Study</option>
+                <option value="research">Research</option>
+                <option value="meeting">Meeting</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="filter-item">
+            <label>By College:</label>
+            <select id="filterCollege">
+                <option value="all">All Colleges</option>
+                <option value="cas">Arts and Sciences</option>
+                <option value="cba">Business Administration</option>
+                <option value="ced">Education</option>
+                <option value="cet">Engineering</option>
+                <option value="con">Nursing</option>
+                <option value="ccs">Computer Studies</option>
+                <option value="coa">Accountancy</option>
+                <option value="com">Music</option>
+                <option value="col">Law</option>
+                <option value="ccom">Communication</option>
+                <option value="cmed">Medicine</option>
+                <option value="carch">Architecture</option>
+                <option value="crim">Criminology</option>
+            </select>
+        </div>
+
+        <div class="filter-item">
+            <label>By Type:</label>
+            <select id="filterType">
+                <option value="all">All Types</option>
+                <option value="student">Students</option>
+                <option value="faculty">Teachers/Faculty</option>
+                <option value="staff">Staff/Employees</option>
+            </select>
+        </div>
+
+        <button id="applyFilterBtn" class="apply-btn">Apply Filter</button>
+        <button id="resetFilterBtn" class="reset-btn">Reset</button>
+
+    </div>
+
+    <!-- FILTERED STATS CARDS -->
+    <div class="filtered-stats" id="filteredStats" style="display:none">
+        <div class="stat-card">
+            <h3>Filtered Today</h3>
+            <h1 id="filteredToday">0</h1>
+            <p>Visitors</p>
+        </div>
+        <div class="stat-card">
+            <h3>Filtered Week</h3>
+            <h1 id="filteredWeek">0</h1>
+            <p>Visitors</p>
+        </div>
+        <div class="stat-card">
+            <h3>Filtered Month</h3>
+            <h1 id="filteredMonth">0</h1>
+            <p>Visitors</p>
+        </div>
+        <div class="stat-card">
+            <h3>Filtered Total</h3>
+            <h1 id="filteredTotal">0</h1>
+            <p>Visitors</p>
+        </div>
+    </div>
+</div>
 
         
         <div class="controls-container">

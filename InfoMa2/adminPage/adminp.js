@@ -59,6 +59,69 @@ async function loadStats() {
     document.getElementById('insideCount').textContent = insideData?.length || 0
 }
 
+    // ── FILTER STATS ──
+document.getElementById('applyFilterBtn').addEventListener('click', async function() {
+    const reason = document.getElementById('filterReason').value
+    const college = document.getElementById('filterCollege').value
+    const type = document.getElementById('filterType').value
+
+    // get all visits
+    const { data: visits } = await supabase
+        .from('visits')
+        .select('*')
+
+    // get all users
+    const { data: users } = await supabase
+        .from('users')
+        .select('*')
+
+    // combine
+    let combined = visits.map(visit => {
+        const user = users?.find(u => u.id === visit.user_id)
+        return { ...visit, users: user }
+    })
+
+    // apply filters
+    if (reason !== 'all') {
+        combined = combined.filter(v => v.reason === reason)
+    }
+
+    if (college !== 'all') {
+        combined = combined.filter(v => v.users?.college === college)
+    }
+
+    if (type !== 'all') {
+        combined = combined.filter(v => v.users?.role === type)
+    }
+
+    // calculate filtered stats
+    const today = new Date().toLocaleDateString('en-CA')
+    const weekAgo = new Date()
+    weekAgo.setDate(weekAgo.getDate() - 7)
+    const monthAgo = new Date()
+    monthAgo.setMonth(monthAgo.getMonth() - 1)
+
+    const todayCount = combined.filter(v => v.date === today).length
+    const weekCount = combined.filter(v => new Date(v.time_in) >= weekAgo).length
+    const monthCount = combined.filter(v => new Date(v.time_in) >= monthAgo).length
+    const totalCount = combined.length
+
+    // show filtered stats
+    document.getElementById('filteredToday').textContent = todayCount
+    document.getElementById('filteredWeek').textContent = weekCount
+    document.getElementById('filteredMonth').textContent = monthCount
+    document.getElementById('filteredTotal').textContent = totalCount
+    document.getElementById('filteredStats').style.display = 'grid'
+})
+
+// ── RESET FILTER ──
+document.getElementById('resetFilterBtn').addEventListener('click', function() {
+    document.getElementById('filterReason').value = 'all'
+    document.getElementById('filterCollege').value = 'all'
+    document.getElementById('filterType').value = 'all'
+    document.getElementById('filteredStats').style.display = 'none'
+})
+
 
 async function loadVisits(search = '', filter = 'all', startDate = '', endDate = '') {
     let query = supabase
