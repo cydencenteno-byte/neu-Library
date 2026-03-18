@@ -12,13 +12,44 @@
     <nav>
         <img src="/adminPage/photos/neulogo.png" class="logotop">
         <h3>NEU LIBRARY | ADMIN</h3>
+        <button class="tab-btn" id="tabSettings">⚙️ Settings</button>
+        
         <button id="logoutBtn" class="logoutbtn">Logout</button>
     </nav>
 
     <div class="dashboard">
 
         
-        <div class="stats-container">
+        <div class="stats-container"><div class="table-container" id="settingsPanel" style="display:none">
+    <div class="settings-form">
+        <h3>Change Admin Credentials</h3>
+        
+        <div class="setting-field">
+            <label>New Email:</label>
+            <input type="email" id="newEmail" placeholder="Enter new email">
+        </div>
+
+        <div class="setting-field">
+            <label>New Password:</label>
+            <input type="password" id="newPassword" placeholder="Enter new password">
+        </div>
+
+        <div class="setting-field">
+            <label>Confirm Password:</label>
+            <input type="password" id="confirmNewPassword" placeholder="Confirm new password">
+        </div>
+
+        <div class="setting-field">
+            <label>Current Password (required):</label>
+            <input type="password" id="currentPassword" placeholder="Enter current password">
+        </div>
+
+        <p id="settingsError" class="error-message"></p>
+        <p id="settingsSuccess" class="success-message"></p>
+
+        <button id="saveSettingsBtn">Save Changes</button>
+    </div>
+</div>
             <div class="stat-card" id="cardToday">
                 <h3>Today</h3>
                 <h1 id="todayCount">0</h1>

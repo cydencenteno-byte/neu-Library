@@ -52,7 +52,7 @@ nav h3{
     height: 100vh;;
 }
 .left-side{
-    background-image: linear-gradient(to top, rgba(0,0,0,1), transparent), url("/InfoMa2/Login/photos/NEULIBRARY.png");
+    background-image: linear-gradient(to top, rgba(0,0,0,1), transparent), url("/Login/photos/NEULIBRARY.png");
     display: flex;
     flex-direction: column;
     background-position: center;
