@@ -180,15 +180,7 @@ button:hover{
 
 }
 
-.password-wrapper {
-    width: 253px; 
-    position: relative; 
-}
 
-.password-wrapper input {
-    width: 100%;
-    padding-right: 40px;
-}
 
 .toggle-btn {
     position: absolute;
