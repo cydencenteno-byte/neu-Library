@@ -179,3 +179,34 @@ button:hover{
     align-self: center;
 
 }
+
+.password-wrapper {
+    position: relative;
+    width: 253px;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.toggle-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none !important;
+    border: none !important;
+    cursor: pointer;
+    font-size: 16px;
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    color: #888;
+    box-shadow: none !important;
+}
+
+.toggle-btn:hover {
+    background: none !important;
+    color: #333 !important;
+}

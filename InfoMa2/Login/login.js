@@ -91,8 +91,8 @@ form.addEventListener('submit',async function (e) {
             window.location.href = '/adminPage/adminp.html';
         } else {
             window.location.href = '/WelcomPage/welcome.html';
-        }       
-
+        }     
+        
         document.getElementById('togglePassword').addEventListener('click', function() {
     const passwordInput = document.getElementById('password')
     if (passwordInput.type === 'password') {
