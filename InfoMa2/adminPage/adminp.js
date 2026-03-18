@@ -159,7 +159,7 @@ async function loadVisits(search = '', filter = 'all', startDate = '', endDate =
     let filtered = combined
 
     if (search) {
-        filtered = data.filter(visit => {
+        filtered = combined.filter(visit => {
             const name = (visit.users?.first_name + ' ' + visit.users?.last_name).toLowerCase()
             const role = visit.users?.role?.toLowerCase() || ''
             const reason = visit.reason?.toLowerCase() || ''
@@ -299,6 +299,9 @@ async function loadInside() {
 
     if (error) { console.log(error); return }
 
+    const { data: users } = await supabase
+        .from('users').select('*')
+
     const tbody = document.getElementById('insideTableBody')
     tbody.innerHTML = ''
 
@@ -308,10 +311,11 @@ async function loadInside() {
     }
 
     data.forEach(visit => {
+        const user = users?.find(u => u.id === visit.user_id)
         const row = document.createElement('tr')
         row.innerHTML = `
-            <td>${visit.users?.first_name} ${visit.users?.last_name}</td>
-            <td>${visit.users?.role}</td>
+            <td>${user?.first_name || ''} ${user?.last_name || ''}</td>
+            <td>${user?.role || '-'}</td>
             <td>${visit.reason}</td>
             <td>${new Date(visit.time_in).toLocaleTimeString()}</td>
         `
