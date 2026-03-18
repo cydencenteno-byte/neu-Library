@@ -82,7 +82,7 @@ nav h3{
     
 }
 .bgimg{
-    background-image: url("/InfoMa2/Login/photos/clouds.jpg");
+    background-image: url("/Login/photos/clouds.jpg");
     background-size: cover;
     background-position: center;
     position: absolute;
