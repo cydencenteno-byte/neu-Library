@@ -59,7 +59,7 @@ form.addEventListener('submit',async function (e) {
         .eq('email', email)
         .eq('password', password)
         .neq('role', 'admin')
-        .single()
+        .maybeSingle()
    
         if(error || !data) {
         loginError.textContent = 'Invalid email or password. Please try again.';
