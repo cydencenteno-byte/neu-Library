@@ -63,7 +63,7 @@ async function loadStats() {
 async function loadVisits(search = '', filter = 'all', startDate = '', endDate = '') {
     let query = supabase
         .from('visits')
-        .select(`*, users(id, first_name, last_name, role, college, department, position, is_blocked)`)
+        .select('*')
         .order('time_in', { ascending: false })
 
     const today = new Date().toLocaleDateString('en-CA')
@@ -81,10 +81,19 @@ async function loadVisits(search = '', filter = 'all', startDate = '', endDate =
         query = query.gte('date', startDate).lte('date', endDate)
     }
 
-    const { data, error } = await query
-    if (error) { console.log(error); return }
+    const { data: visits, error } = await query
+    if (error) { console.log('visits error:', error); return }
 
-    let filtered = data
+    const { data: users } = await supabase
+        .from('users')
+        .select('*')
+
+    const combined = visits.map(visit => {
+        const user = users?.find(u => u.id === visit.user_id)
+        return { ...visit, users: user }
+    })
+
+    let filtered = combined
 
     if (search) {
         filtered = data.filter(visit => {
@@ -221,7 +230,7 @@ async function loadBlocked() {
 async function loadInside() {
     const { data, error } = await supabase
         .from('visits')
-        .select(`*, users(first_name, last_name, role)`)
+        .select('*')
         .is('time_out', null)
         .order('time_in', { ascending: false })
 
