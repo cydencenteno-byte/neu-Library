@@ -22,6 +22,17 @@ function clearErrors() {
     loginError.textContent = '';
 }
 
+document.getElementById('togglePassword').addEventListener('click', function() {
+    const passwordInput = document.getElementById('password')
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text'
+        this.textContent = '🙈'
+    } else {
+        passwordInput.type = 'password'
+        this.textContent = '👁'
+    }
+})
+
 form.addEventListener('submit',async function (e) {
     e.preventDefault();
     clearErrors();
