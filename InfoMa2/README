@@ -1,0 +1,80 @@
+# NEU Library Visitor Log System
+
+A web-based library visitor tracking system for New Era University.
+
+## 🔗 Live Demo
+https://neu-library-rho.vercel.app
+
+## 📋 Features
+
+### For Visitors (Students/Faculty/Staff)
+- Register with NEU institutional email
+- Log in and select reason for visit
+- View personal visit history
+- Exit library to record time out
+
+### For Admin
+- View visitor statistics (daily/weekly/monthly)
+- Search visitors by name, role, or reason
+- Filter by date range
+- Block/unblock users
+- Export visitor report to PDF
+- View currently inside library
+- Manage all registered users
+
+## 🛠️ Technologies Used
+- HTML, CSS, JavaScript
+- Supabase (Database)
+- Vercel (Hosting)
+- GitHub (Version Control)
+
+## 📁 Project Structure
+```
+InfoMa2/
+├── adminLogin/     → Admin login page
+├── adminPage/      → Admin dashboard
+├── dboard/         → User dashboard
+├── Login/          → User login page
+├── Registration/   → Registration page
+├── WelcomPage/     → Welcome + reason page
+└── supabase.js     → Database connection
+```
+
+## 🗄️ Database Tables
+
+### users
+| Column | Type | Description |
+|--------|------|-------------|
+| id | uuid | Primary key |
+| email | text | NEU email |
+| password | text | User password |
+| first_name | text | First name |
+| last_name | text | Last name |
+| role | text | student/faculty/staff/admin |
+| college | text | For students |
+| department | text | For faculty |
+| position | text | For staff |
+| is_blocked | boolean | Block status |
+
+### visits
+| Column | Type | Description |
+|--------|------|-------------|
+| id     | uuid | Primary key |
+|user_id | uuid | Reference to users |
+| reason | text | Visit reason |
+|time_in | timestamp | Entry time |
+|time_out| timestamp | Exit time |
+| date   | date | Visit date |
+
+## 👤 Default Admin Credentials
+- Email: admin@neu.edu.ph
+- Password: admin1234
+
+## 🚀 How to Run Locally
+1. Clone the repository
+2. Open with VS Code
+3. Install Live Server extension
+4. Open `Login/login.html` with Live Server
+
+## 👨‍💻 Developer
+Cyden Centeno - 2025
