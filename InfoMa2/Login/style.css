@@ -181,8 +181,8 @@ button:hover{
 }
 
 .password-wrapper {
-    position: relative;
-    width: 253px;
+    width: 253px; 
+    position: relative; 
 }
 
 .password-wrapper input {
