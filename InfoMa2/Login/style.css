@@ -169,27 +169,6 @@ button:hover{
     color: black;
 }
 
-button.toggle-btn {
-    width: 30px !important;
-    height: 30px !important;
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    position: absolute !important;
-    right: 8px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    font-size: 16px !important;
-    cursor: pointer !important;
-    color: #888 !important;
-    padding: 0 !important;
-}
-
-button.toggle-btn:hover {
-    background: none !important;
-    color: #333 !important;
-}
-
 .logo{
     display: flex;
     justify-content: center;
@@ -201,35 +180,4 @@ button.toggle-btn:hover {
     height: auto;
     align-self: center;
 
-}
-
-.password-wrapper {
-    width: 253px; 
-    position: relative; 
-}
-
-.password-wrapper input {
-    width: 100%;
-    padding-right: 40px;
-}
-
-.toggle-btn {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none !important;
-    border: none !important;
-    cursor: pointer;
-    font-size: 16px;
-    width: auto !important;
-    height: auto !important;
-    padding: 0 !important;
-    color: #888;
-    box-shadow: none !important;
-}
-
-.toggle-btn:hover {
-    background: none !important;
-    color: #333 !important;
 }
